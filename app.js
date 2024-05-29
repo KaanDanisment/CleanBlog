@@ -2,7 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const path = require("path")
 const ejs = require("ejs");
-const post = require("./models/Post")
+const Post = require("./models/Post")
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(express.json())
 
 // ROUTES
 app.get("/", async (req,res) => {
-    const posts = await post.find({})
+    const posts = await Post.find({})
     res.render("index", {
         posts
     })
@@ -33,8 +33,14 @@ app.get("/add_post",(req,res) => {
 app.get("/post",(req,res) => {
     res.render("post")
 })
+app.get("/posts/:id", async (req,res) => {
+    const post = await Post.findById(req.params.id);
+    res.render("post", {
+        post
+    })
+})
 app.post("/posts",async (req,res) => {
-    await post.create(req.body)
+    await Post.create(req.body)
     res.redirect("/")
 })
 
