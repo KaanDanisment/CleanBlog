@@ -23,18 +23,18 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form method="POST" action="/post">
+        <form method="POST" action="/post/<%= post._id %>?_method=PUT">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Title</label>
-              <input name="title" type="text" class="form-control" placeholder="Post Title" id="name" required data-validation-required-message="Please enter your name.">
+              <input name="title" type="text" value="<%= post.title %>" class="form-control" placeholder="Post Title" id="name" required data-validation-required-message="Please enter your name.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Detail</label>
-              <textarea name="detail" rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+              <textarea name="detail" rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."><%= post.detail %></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
