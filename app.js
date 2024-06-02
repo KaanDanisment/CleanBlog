@@ -11,7 +11,7 @@ const pageController = require("./controllers/pageController")
 const app = express();
 
 //connect DB
-mongoose.connect("mongodb://localhost/cleanblog-test-db")
+mongoose.connect("mongodb+srv://kaan:Danisment.1@cluster0.r5nm9tq.mongodb.net/CleanBlog?retryWrites=true&w=majority&appName=Cluster0")
 
 //TEMPLATE ENGINE
 app.set("view engine","ejs")
@@ -38,7 +38,7 @@ app.get("/post",pageController.getPostPage)
 app.get("/post/edit/:id", pageController.getEditPage)
 
 
-const port = 5000
+const port = process.env.PORT || 4000
 app.listen(port, ()=>{
     console.log(`Server started in port ${port} `)
 })
